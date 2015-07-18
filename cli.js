@@ -12,7 +12,7 @@ var cli = meow({
 		'',
 		'Example',
 		'  $ imgc *.CR2 --format jpeg --quality high',
-		'  $ imgc *.jpg *.png --format tiff --dest ./output/tiff',
+		'  $ imgc *.jpg *.png --format tiff --out ./output/tiff',
 		'',
 		'Options',
 		'  -f, --format <format>      File format of converted files',
