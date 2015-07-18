@@ -1,0 +1,46 @@
+{
+  "name": "imgc",
+  "version": "0.0.0",
+  "description": "An image converter for OS X systems.",
+  "license": "MIT",
+  "repository": "gillstrom/imgc",
+  "author": {
+    "email": "andreasgillstrom@gmail.com",
+    "name": "Andreas Gillström",
+    "url": "github.com/gillstrom"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
+  "keywords": [
+    "cli",
+    "cli-app",
+    "convert",
+    "converter",
+    "CR2",
+    "image",
+    "img",
+    "jpg",
+    "mac",
+    "os x",
+    "osx",
+    "png",
+    "raw",
+    "sips"
+  ],
+  "dependencies": {
+    "meow": "^3.3.0",
+    "mkdirp": "^0.5.1"
+  },
+  "devDependencies": {
+    "ava": "^0.0.4"
+  }
+}
