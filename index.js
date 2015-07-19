@@ -50,6 +50,11 @@ module.exports = function (files, dest, opts, cb) {
 	}
 
 	mkdirp(dest, function (err) {
+		if (err) {
+			cb(err);
+			return;
+		}
+
 		var cmd = [
 			'sips',
 			'-s format',
