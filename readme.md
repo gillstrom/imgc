@@ -80,13 +80,13 @@ Type: `object`
 *Required*  
 Type: `string`
 
-Set the format to convert to, i.e `jpeg`.
+Set the format to convert to, e.g. `jpeg`.
 
 ##### options.quality
  
 Type: `string`
 
-Set the quality of converted images, i.e `best`.
+Set the quality of converted images, e.g. `best`.
 
 #### callback(err)
 
