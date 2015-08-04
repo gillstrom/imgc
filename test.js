@@ -1,5 +1,4 @@
 'use strict';
-var path = require('path');
 var stat = require('fs').stat;
 var test = require('ava');
 var imgc = require('./');
@@ -39,6 +38,3 @@ test('Should output tiff', function (t) {
 		});
 	});
 });
-
-
-

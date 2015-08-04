@@ -51,7 +51,7 @@ if (!cli.flags.format) {
 	process.exit(1);
 }
 
-imgc(cli.input.join(' '), cli.flags.out, {format: cli.flags.format, quality: cli.flags.quality}, function (err, res) {
+imgc(cli.input.join(' '), cli.flags.out, {format: cli.flags.format, quality: cli.flags.quality}, function (err) {
 	if (err) {
 		console.error(err.message.match(/(Error [0-9]: ).+/)[0]);
 		process.exit(1);
