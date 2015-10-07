@@ -13,9 +13,9 @@ $ npm install --save imgc
 ## Usage
 
 ```js
-var imgc = require('imgc');
+const imgc = require('imgc');
 
-imgc('*.CR2 *.png', 'dest', {format: 'jpeg', quality: 'medium'}, function (err) {
+imgc('*.CR2 *.png', 'dest', {format: 'jpeg', quality: 'medium'}.then(() => {
 	console.log('Images converted');
 });
 ```
