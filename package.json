@@ -1,6 +1,6 @@
 {
   "name": "imgc",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "An image converter for OS X systems.",
   "license": "MIT",
   "repository": "gillstrom/imgc",
