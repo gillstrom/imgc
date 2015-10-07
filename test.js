@@ -1,14 +1,12 @@
 'use strict';
-var stat = require('fs').stat;
-var test = require('ava');
-var imgc = require('./');
+import {stat} from 'fs';
+import test from 'ava';
+import imgc from './';
 
 test('Should output jpeg', t => {
-	t.plan(3);
+	t.plan(2);
 
-	imgc('./fixtures/*.CR2 ./fixtures/*.png', './fixtures/output', {format: 'jpeg', quality: 'medium'}, err => {
-		t.assert(!err, err);
-
+	imgc('./fixtures/*.CR2 ./fixtures/*.png', './fixtures/output', {format: 'jpeg', quality: 'medium'}).then(() => {
 		stat('./fixtures/output/test_CR2.jpg', err => {
 			t.assert(!err, err);
 		});
@@ -19,12 +17,11 @@ test('Should output jpeg', t => {
 	});
 });
 
+
 test('Should output tiff', t => {
-	t.plan(4);
+	t.plan(3);
 
-	imgc('./fixtures/*.*', './fixtures/output', {format: 'tiff'}, err => {
-		t.assert(!err, err);
-
+	imgc('./fixtures/*.*', './fixtures/output', {format: 'tiff'}).then(() => {
 		stat('./fixtures/output/test_CR2.tiff', err => {
 			t.assert(!err, err);
 		});

@@ -10,22 +10,23 @@ $ npm install --save imgc
 ```
 
 
-## Usage
-
-```js
-var imgc = require('imgc');
-
-imgc('*.CR2 *.png', 'dest', {format: 'jpeg', quality: 'medium'}, function (err) {
-	console.log('Images converted');
-});
-```
-
-
 ## CLI
 
 ```
 $ npm install --global imgc
 ```
+
+
+## Usage
+
+```js
+const imgc = require('imgc');
+
+imgc('*.CR2 *.png', 'dest', {format: 'jpeg', quality: 'medium'}).then(() => {
+	console.log('Images converted');
+});
+```
+
 
 ```
 $ imgc --help
@@ -54,7 +55,9 @@ $ imgc --help
 
 ## API
 
-### imgc(input, dest, options, callback)
+### imgc(input, dest, options)
+
+Returns a promise that resolves when images are converted.
 
 #### input
 
@@ -87,12 +90,6 @@ Set the format to convert to, e.g. `jpeg`.
 Type: `string`
 
 Set the quality of converted images, e.g. `best`.
-
-#### callback(err)
-
-Type: `function`
-
-Callback that returns nothing but a possible exception.
 
 
 ## License

@@ -51,11 +51,11 @@ if (!cli.flags.format) {
 	process.exit(1);
 }
 
-imgc(cli.input.join(' '), cli.flags.out, {format: cli.flags.format, quality: cli.flags.quality}, function (err) {
-	if (err) {
+imgc(cli.input.join(' '), cli.flags.out, {format: cli.flags.format, quality: cli.flags.quality})
+	.then(function () {
+		console.log('Images was successfully converted');
+	})
+	.catch(function (err) {
 		console.error(err.message.match(/(Error [0-9]: ).+/)[0]);
 		process.exit(1);
-	}
-
-	console.log('Images was successfully converted');
-});
+	});

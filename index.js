@@ -1,6 +1,8 @@
 'use strict';
 var exec = require('child_process').exec;
 var mkdirp = require('mkdirp');
+var Promise = require('pinkie-promise');
+var pify = require('pify');
 var formats = [
 	'jpeg',
 	'tiff',
@@ -22,39 +24,34 @@ var qualities = [
 	'best'
 ];
 
-module.exports = function (files, dest, opts, cb) {
+module.exports = function (files, dest, opts) {
 	opts = opts || {};
 
 	if (process.platform !== 'darwin') {
-		throw new Error('Only OS X systems are supported');
+		return Promise.reject(new Error('Only OS X systems are supported'));
 	}
 
 	if (typeof files !== 'string') {
-		throw new TypeError('Expected a string');
+		return Promise.reject(new TypeError('Expected a string'));
 	}
 
 	if (typeof dest !== 'string') {
-		throw new TypeError('Expected a destination');
+		return Promise.reject(new TypeError('Expected a destination'));
 	}
 
 	if (!opts.format) {
-		throw new Error('Format is required in order to convert');
+		return Promise.reject(new Error('Format is required in order to convert'));
 	}
 
 	if (formats.indexOf(opts.format) === -1) {
-		throw new Error('Format not supported');
+		return Promise.reject(new Error('Format not supported'));
 	}
 
 	if (opts.quality && qualities.indexOf(opts.quality) === -1 && typeof Number(opts.quality) !== 'number') {
-		throw new Error('Quality not supported');
+		return Promise.reject(new Error('Quality not supported'));
 	}
 
-	mkdirp(dest, function (err) {
-		if (err) {
-			cb(err);
-			return;
-		}
-
+	return pify(mkdirp, Promise)(dest).then(function () {
 		var cmd = [
 			'sips',
 			'-s format',
@@ -65,13 +62,6 @@ module.exports = function (files, dest, opts, cb) {
 			dest
 		].join(' ');
 
-		exec(cmd, function (err) {
-			if (err) {
-				cb(err);
-				return;
-			}
-
-			cb();
-		});
+		return pify(exec, Promise)(cmd);
 	});
 };
